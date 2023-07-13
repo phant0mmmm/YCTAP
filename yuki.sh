@@ -132,11 +132,11 @@ echo "║             Web Application Firewall Scanning Starting         ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo ""
 echo "scanning WAF with wafw00f"
-wafw00f http://$TARGET
+wafw00f https://$TARGET
 echo "scanning finished next..."
 echo ""
 echo "try bypass WAF with wafninja"
-./wafninja bypass -u "http://$TARGET/index.php" -p "Name=PAYLOAD&Submit=Submit" -c "phpsessid=value" -t xss -o output.html
+./wafninja bypass -u "https://$TARGET/index.php" -p "Name=PAYLOAD&Submit=Submit" -c "phpsessid=value" -t xss -o output.html
 echo ""
 echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
@@ -160,21 +160,21 @@ echo "checking web with whatweb (if not run maybe not installed in your OS)"
 echo ""
 echo ""
 echo "checking web with spaghetti"
-python Module/Spaghetti/spaghetti.py --url http://$TARGET --scan [0-3] 
+python Module/Spaghetti/spaghetti.py --url https://$TARGET --scan [0-3] 
 echo ""
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                   Scan Wordpress Starting                      ║"              
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo "start scanning wpscan.rb (if not run maybe not installed in your OS)"
-wpscan --url http://$TARGET --enumerate u
+wpscan --url https://$TARGET --enumerate u
 echo ""
 echo "If Your OS Doesn't Have WPScan"
 echo "Dont Worry Dude I Have Alternative Scanner For You"
 echo "Next Time Use Kali Linux if you want this tool work perfectly "
 echo ""
-python Module/wpscanner.py -s http://$TARGET -n 20
-droopescan scan wordpress -u http://$TARGET
-python Module/WPSeku/wpseku.py --target http://$TARGET
+python Module/wpscanner.py -s https://$TARGET -n 20
+droopescan scan wordpress -u https://$TARGET
+python Module/WPSeku/wpseku.py --target https://$TARGET
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                   Scan Wordpress Finished                      ║"              
 echo "╚════════════════════════════════════════════════════════════════╝"
